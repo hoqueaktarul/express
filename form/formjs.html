@@ -1,0 +1,239 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./other.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Javascript</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-center">
+        <h5>HTTP Methods</h5>
+        <div>
+          <a href="index.html">regular </a>
+          <a href="js.html">javascript </a>
+        </div>
+      </div> 
+    </nav>
+    <main>
+      <section>
+        <form>
+          <h3>Javascript Form</h3>
+          <div class="form-row">
+            <label for="name"> enter name </label>
+            <input 
+              type="text" 
+              name="name"
+              id="name"
+              class="form-input"
+              autocomplete="false"
+            />
+            <small class="form-alert"></small>
+          </div>
+          <button type="submit" class="block submit-btn">submit</button>
+        </form>
+        <div class="result"></div>
+      </section>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const result = document.querySelector('.result')
+
+      const fetchPeople = async () => {
+        try {
+          const { data } = await axios.get('/api/people')
+
+          const people = data.data.map((person) => {
+            return `<h5>${person.name}</h5>`
+          })
+          result.innerHTML = people.join('')
+        } catch (error) {
+          result.innerHTML = `<div class="alert alert-danger">Can't Fetch Data</div>`
+        }
+      }
+      fetchPeople()
+      // submit form
+      const btn = document.querySelector('.submit-btn')
+      const input = document.querySelector('.form-input')
+      const formAlert = document.querySelector('.form-alert')
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const nameValue = input.value
+
+        try {
+          const { data } = await axios.post('/api/people', { name: nameValue })
+          const h5 = document.createElement('h5')
+          h5.textContent = data.person
+          result.appendChild(h5)
+        } catch (error) {
+          // console.log(error.response)
+          formAlert.textContent = error.response.data.msg
+        }
+        input.value = ''
+      })
+    </script>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js form</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="formother.css" />
+    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="navindex.css" />
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav-center">
+        <!-- nav header -->
+        <div class="nav-header">
+          <img
+            src="./vozet_logo.png"
+            class="logo"
+            alt="logo"
+          />
+          <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <!-- links -->
+        <ul class="links">
+          <li>
+            <a href="/">home</a>
+          </li>
+          <li>
+            <a href="/about">about</a>
+          </li>
+          <li>
+            <a href="/regular">regular</a>
+          </li>
+          <li>
+            <a href="/javascript">javascript</a>
+          </li>
+        </ul>
+        <!-- social media -->
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-behance"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-sketch"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section>
+        <form>
+          <h3>Javascript Form</h3>
+          <div class="form-row">
+            <label for="name"> enter name </label>
+            <input 
+              type="text" 
+              name="name"
+              id="name"
+              class="form-input"
+              autocomplete="false"
+            />
+            <small class="form-alert"></small>
+          </div>
+          <button type="submit" class="block submit-btn">submit</button>
+        </form>
+        <div class="result"></div>
+      </section>
+    </main>
+
+    <!-- javascript -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const result = document.querySelector('.result')
+
+      const fetchPeople = async () => {
+        try {
+          const  {data } = await axios.get('/api/people')
+
+          const people = data.data.map((person) => {
+            return `<h5>${person.name}</h5>`
+          })
+          result.innerHTML = people.join('')
+        } catch (error) {
+          result.innerHTML = `<div class="alert alert-danger">Can't Fetch Data</div>`
+        }
+      }
+      fetchPeople()
+      // submit form
+      const btn = document.querySelector('.submit-btn')
+      const input = document.querySelector('.form-input')
+      const formAlert = document.querySelector('.form-alert')
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const nameValue = input.value
+       
+        try {
+          // const data  = await axios.post('/api/people', { name: nameValue})
+         axios.post('/api/people',{name:nameValue})
+         .then((res)=>{
+          const h5 = document.createElement('h5')
+          h5.textContent =res.data.person
+          result.appendChild(h5)
+         })
+         .catch((e)=>{
+          formAlert.textContent = e.response.data.msg
+
+         })
+
+          
+        } catch (error) {
+          formAlert.textContent = error.response.data.msg
+        }
+        input.value = ''
+        formAlert.textContent = ""
+
+      })
+    </script>
+    <script src="navindex.js"></script>
+
+  </body>
+</html>

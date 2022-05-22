@@ -40,4 +40,12 @@ const data=[
   description: "It's her birthday!",
   }
 ];
-module.exports=data
+
+const people=[
+  {id:1,name:"aktar"},
+  {id:2,name:"niloy"},
+  {id:3,name:"vozet"},
+  {id:4,name:"khan"},
+  {id:5,name:"ali"}
+]
+module.exports={data,people}
